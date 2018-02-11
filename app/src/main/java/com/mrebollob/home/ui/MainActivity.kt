@@ -1,16 +1,19 @@
-package com.mrebollob.home
+package com.mrebollob.home.ui
 
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import com.crashlytics.android.Crashlytics
+import com.github.romychab.slidetounlock.renderers.ScaleRenderer
+import com.github.romychab.slidetounlock.sliders.HorizontalSlider
+import com.mrebollob.home.R.layout
 import com.mrebollob.home.data.NetworkDataSource
+import io.fabric.sdk.android.Fabric
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.openButton
-import com.crashlytics.android.Crashlytics
-import io.fabric.sdk.android.Fabric
-
+import kotlinx.android.synthetic.main.activity_main.slide1
 
 
 class MainActivity : Activity() {
@@ -20,13 +23,21 @@ class MainActivity : Activity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(layout.activity_main)
     Fabric.with(this, Crashlytics())
     initView()
   }
 
   private fun initView() {
     openButton.setOnClickListener { openStreetDoor() }
+
+    slide1.setRenderer(ScaleRenderer())
+    slide1.setSlider(HorizontalSlider())
+    slide1.addSlideListener { slider, done ->
+      if (done) {
+        slider.reset()
+      }
+    }
   }
 
   private fun openStreetDoor() {

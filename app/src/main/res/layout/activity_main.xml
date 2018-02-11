@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mrebollob.home.MainActivity"
+    tools:context="com.mrebollob.home.ui.MainActivity"
     >
 
   <Button
@@ -20,5 +20,40 @@
       tools:layout_editor_absoluteX="148dp"
       tools:layout_editor_absoluteY="16dp"
       />
+
+  <com.github.romychab.slidetounlock.SlideLayout
+      android:id="@+id/slide1"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_margin="16dp"
+      android:background="@drawable/horizontal_back"
+      >
+
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        >
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="1px"
+          android:layout_marginLeft="1px"
+          android:layout_marginRight="1px"
+          android:layout_marginTop="1px"
+          android:background="@drawable/button_bg"
+          />
+
+      <ImageView
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:layout_gravity="center_vertical|right"
+          android:layout_marginRight="6dp"
+          android:src="@drawable/ic_slide"
+          />
+
+    </FrameLayout>
+
+  </com.github.romychab.slidetounlock.SlideLayout>
 
 </android.support.constraint.ConstraintLayout>
