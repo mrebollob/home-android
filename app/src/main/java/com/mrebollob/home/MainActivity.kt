@@ -8,6 +8,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.openButton
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
+
+
 
 class MainActivity : Activity() {
 
@@ -17,7 +21,7 @@ class MainActivity : Activity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-
+    Fabric.with(this, Crashlytics())
     initView()
   }
 
